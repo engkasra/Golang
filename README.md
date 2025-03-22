@@ -70,6 +70,6 @@ Right now, this repo is primarily for personal use, but suggestions and improvem
 
 If you want to connect or collaborate, you can reach me here:
 - GitHub Issues
-- (Optional) Email
-- (Optional) LinkedIn
+- Email: engksa75@gmail.com
+- LinkedIn: linkedin.com/in/kasra-abdollahi
 
