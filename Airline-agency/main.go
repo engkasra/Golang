@@ -18,9 +18,10 @@ func main() {
 	for i := 0; i < CountryCount; i++ {
 
 		scanner.Scan()
-		line := scanner.Text()
-		parts := strings.Fields(line)
+		// line := scanner.Text()
+		// parts := strings.Fields(line)
 
+		parts := strings.Fields(scanner.Text())
 		country := parts[0]
 		code := parts[1]
 
@@ -28,21 +29,46 @@ func main() {
 
 	}
 
+	var results []string
 	scanner.Scan()
 	TelephonNumberCount, _ := strconv.Atoi(scanner.Text())
-	var CodeCountries []string
-	// var ContryName []string
+
 	for i := 0; i < TelephonNumberCount; i++ {
 
 		scanner.Scan()
-		TelephonNumber := scanner.Text()
-		code := TelephonNumber[:4]
-		CodeCountries = append(CodeCountries, code)
+		number := scanner.Text()
 
-		if country, ok := CodeToCountry[code]; ok {
-			fmt.Println(country)
+		found := false
+		for code, country := range CodeToCountry {
+
+			if strings.HasPrefix(number, code) {
+				results = append(results, country)
+				found = true
+				break
+			}
 
 		}
+		if !found {
+			results = append(results, "Invalid Number")
+		}
+
+		// Following comment is working but very simple!
+		// if len(number) >= 4 {
+		// 	code := number[:4]
+
+		// 	if country, ok := CodeToCountry[code]; ok {
+		// 		fmt.Println(country)
+
+		// 	} else {
+		// 		fmt.Println("Invalid Number")
+		// 	}
+		// } else {
+		// 	fmt.Println("Invalid Number")
+		// }
+
+	}
+	for _, res := range results {
+		fmt.Println(res)
 	}
 
 }
